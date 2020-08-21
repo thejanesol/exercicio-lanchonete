@@ -84,7 +84,7 @@ public class Programa {
 			
 			//Submenu massa
 			System.out.println("Escolha o tipo de massa");
-			System.out.println("[1]Pizza - [2]Massa - [3]Lasanha");
+			System.out.println("[1]Pizza - [2]Macarrão - [3]Lasanha");
 			int escolhaMassa = scan.nextInt();
 			
 			if (escolhaMassa == 1) {
@@ -92,7 +92,7 @@ public class Programa {
 				
 			} 
 			else if (escolhaMassa == 2) {
-				((Massa) lanche).setTipoDeMassa("Massa");
+				((Massa) lanche).setTipoDeMassa("Macarrão");
 				
 			} 
 			else if (escolhaMassa == 3){
