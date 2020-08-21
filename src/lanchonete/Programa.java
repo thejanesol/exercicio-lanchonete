@@ -27,7 +27,7 @@ public class Programa {
 			
 			//Submenu sanduiche
 			System.out.println("Informe até 10 ingredientes "
-					+ "para rechear seu sanduiche e digite s para finalizar.");
+					+ "para rechear seu sanduiche e digite 0 para finalizar.");
 			while (contador < 10 && !ingrediente.equals("0")){
 			ingrediente = scan.nextLine();
 			ingredientes[contador] = ingrediente;
@@ -49,6 +49,7 @@ public class Programa {
 		else if (codigo == 2) {
 			lanche = new Bolo();
 			
+			//Submenu bolo
 			scan.nextLine();
 			System.out.println("Escolha a massa: ");
 			String massa = scan.nextLine();
@@ -81,6 +82,7 @@ public class Programa {
 		else if (codigo == 3) {
 			lanche = new Massa();
 			
+			//Submenu massa
 			System.out.println("Escolha o tipo de massa");
 			System.out.println("[1]Pizza - [2]Massa - [3]Lasanha");
 			int escolhaMassa = scan.nextInt();
@@ -112,7 +114,8 @@ public class Programa {
 			int distancia = scan.nextInt();
 			lanche.tempoDeEntrega(distancia);
 			
-			System.out.println("Lanche: " +  ((Massa) lanche).getTipoDeMassa() + " com molho" + ((Massa) lanche).getMolho());
+			System.out.println("Lanche: " + ((Massa) lanche).getTipoDeMassa() 
+					+ " com molho " + ((Massa) lanche).getMolho());
 			lanche.setPreco(20);
 			lanche.setNomeCliente(nome);			
 			System.out.println(lanche);
