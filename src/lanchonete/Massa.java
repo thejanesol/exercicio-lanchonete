@@ -1,6 +1,6 @@
 package lanchonete;
 
-public class Massa extends Lanche {
+public abstract class Massa extends Lanche {
 	private String molho;
 	private String tipoDeMassa;
 
