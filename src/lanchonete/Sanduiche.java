@@ -1,16 +1,14 @@
 package lanchonete;
 
-import java.util.Stack;
-
 public class Sanduiche extends Lanche {
 	private String ingredientes[] = new String[10];
 
 	//Mostra somente os ingredientes escolhidos
 	public String getIngredientes() {
-		Stack <String> ingredientesEscolhidos = new Stack<>();
+		String ingredientesEscolhidos = " ";
 		for (int i = 1; i<ingredientes.length; i++) {
 			if (ingredientes[i] != null) {
-				ingredientesEscolhidos.push(ingredientes[i]);
+				ingredientesEscolhidos += ingredientes[i] + " ";
 			}
 		}
 		return "ingredientes escolhidos = " + ingredientesEscolhidos;
