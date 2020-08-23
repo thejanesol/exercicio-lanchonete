@@ -30,8 +30,10 @@ public class Programa {
 					+ "para rechear seu sanduiche e digite 0 para finalizar.");
 			while (contador < 10 && !ingrediente.equals("0")){
 			ingrediente = scan.nextLine();
+			if (!ingrediente.equals("0")) {
 			ingredientes[contador] = ingrediente;
 			contador ++;
+			}
 			}
 			((Sanduiche) lanche).setIngredientes(ingredientes);
 			

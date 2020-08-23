@@ -9,7 +9,7 @@ public class Sanduiche extends Lanche {
 	public String getIngredientes() {
 		Stack <String> ingredientesEscolhidos = new Stack<>();
 		for (int i = 1; i<ingredientes.length; i++) {
-			if (ingredientes[i] != null && ingredientes[i] != "0") {
+			if (ingredientes[i] != null) {
 				ingredientesEscolhidos.push(ingredientes[i]);
 			}
 		}
