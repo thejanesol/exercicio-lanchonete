@@ -5,7 +5,7 @@ public class Sanduiche extends Lanche {
 
 	//Mostra somente os ingredientes escolhidos
 	public String getIngredientes() {
-		String ingredientesEscolhidos = " ";
+		String ingredientesEscolhidos = "";
 		for (int i = 0; i<ingredientes.length; i++) {
 			if (ingredientes[i] != null) {
 				ingredientesEscolhidos += ingredientes[i] + " ";

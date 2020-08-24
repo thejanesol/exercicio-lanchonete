@@ -19,6 +19,7 @@ public class Programa {
 		if (codigo == 1) {
 			lanche = new Sanduiche();
 			menuSanduiche(lanche);
+			
 		} 
 		
 		else if (codigo == 2) {
@@ -33,11 +34,13 @@ public class Programa {
 		else {
 			System.out.println("Código inválido.");
 		}
+		
 		scan.close();
 }
 	
 	static Scanner scan = new Scanner (System.in);
 	
+	//Submenu sanduiche
 	public static void menuSanduiche (Lanche lanche) {
 		String ingrediente = "";
 		int contador = 0;
@@ -67,24 +70,13 @@ public class Programa {
 			lanche.setPrecoLanche(20);
 		}
 		
-		System.out.println("Qual a sua distância em km do JavaLanches?");
-		int distancia = scan.nextInt();
-		lanche.tempoDeEntrega(distancia);
+		lanche.setPedido("sanduiche recheado com " 
+		+ ((Sanduiche) lanche).getIngredientes());
 		
-		if (distancia <= 10) {
-			lanche.setPrecoFrete(5);
-		} else {
-			lanche.setPrecoFrete(10);
-		}
-		
-		lanche.setPrecoTotal(lanche.getPrecoFrete() + lanche.getPrecoLanche());
-		
-		System.out.println("Pedido: sanduiche recheado com " + ((Sanduiche) lanche).getIngredientes());
-		
-		System.out.println(lanche);
-		
+		fazerPedido(lanche);		
 	}
 	
+	//Submenu bolo
 	public static void menuBolo (Lanche lanche) {
 		System.out.println("Você escolheu bolo.");
 		System.out.println("Escolha a massa: ");
@@ -99,25 +91,14 @@ public class Programa {
 		((Bolo) lanche).setMassa(massa);
 		((Bolo) lanche).setCobertura(cobertura);
 		((Bolo) lanche).setRecheio(recheio);
-		
-		System.out.println("Qual a sua distância em km do JavaLanches?");
-		int distancia = scan.nextInt();
-		lanche.tempoDeEntrega(distancia);
-		
+				
 		lanche.setPrecoLanche(10); 
-		
-		if (distancia <= 10) {
-			lanche.setPrecoFrete(5);
-		} else {
-			lanche.setPrecoFrete(10);
-		}
-		
-		lanche.setPrecoTotal(lanche.getPrecoFrete() + lanche.getPrecoLanche());
 
-		System.out.println("Pedido: Bolo\nMassa: " + ((Bolo) lanche).getMassa() 
+		lanche.setPedido("bolo\nMassa: " + ((Bolo) lanche).getMassa() 
 		+ " - Cobertura: " + ((Bolo) lanche).getCobertura() + " - Recheio: " + 
 				((Bolo) lanche).getRecheio());
-		System.out.println(lanche);
+		
+		fazerPedido(lanche);
 	}
 	
 	static Massa massa;
@@ -147,35 +128,20 @@ public class Programa {
 			System.out.println("Escolha inválida.");					
 		}
 		
-		scan.nextLine();
-		
 		System.out.println("Escolha seu molho: ");
 		String molho = scan.nextLine();
 		((Massa) massa).setMolho(molho);
 		
-		System.out.println("Qual a sua distância em km do JavaLanches?");
-
-		int distancia = scan.nextInt();
-		massa.tempoDeEntrega(distancia);
-		
-		if (distancia <= 10) {
-			massa.setPrecoFrete(5);
-		} else {
-			massa.setPrecoFrete(10);
-		}
-		
-		massa.setPrecoTotal(massa.getPrecoFrete() + massa.getPrecoLanche());
-		
-		System.out.println(((Massa) massa).getTipoDeMassa() 
+		massa.setPedido(((Massa) massa).getTipoDeMassa() 
 				+ " - molho " + ((Massa) massa).getMolho());
-		System.out.println(massa);
+		fazerPedido(massa);
 	}
 	
 	public static void pizza (Massa massa) {
 		System.out.println("Você escolheu pizza.");
 		
 		System.out.println("Escolha o tamanho da sua pizza: \n"
-				+ "1- Pequena 2- Média 3- Grande");
+				+ "[1] Pequena [2] Média [3] Grande");
 		int tamanhoDaPizza = scan.nextInt();
 		
 		switch (tamanhoDaPizza) {
@@ -196,22 +162,23 @@ public class Programa {
 		System.out.println("Informe até 5 ingredientes "
 				+ "para rechear sua pizza e digite 0 para finalizar.");
 		while (contador < 5 && !ingrediente.equals("0")){
-		ingrediente = scan.nextLine();
 		if (!ingrediente.equals("0")) {
+		ingrediente = scan.nextLine();
 		ingredientes[contador] = ingrediente;
 		contador ++;
 		}
 		}
+		
 		((Pizza) massa).setIngredientes(ingredientes);
 		
-		((Massa) massa).setTipoDeMassa("Pedido: Pizza \nIngredientes:" +
+		((Massa) massa).setTipoDeMassa("pizza \nIngredientes:" +
 		((Pizza) massa).getIngredientes()); 
 		
 	}
 	
 	public static void macarrao(Massa massa) {
 		System.out.println("Escolha seu tipo de macarrão:"
-				+ "\n(1-Penne, 2-espaguete, 3-Fusili ou 4-Tagliatelle)");			
+				+ "\n[1]Penne, [2]espaguete, [3]Fusili ou [4]Tagliatelle");			
 		int tipoDeMacarrao = scan.nextInt();
 		String macarrao = "";
 		switch (tipoDeMacarrao) {
@@ -243,7 +210,9 @@ public class Programa {
 			massa.setPrecoLanche(15);
 		} 
 		
-		((Massa) massa).setTipoDeMassa("Pedido: Macarrão " + macarrao + recheio);	
+		scan.nextLine();
+		
+		((Massa) massa).setTipoDeMassa("macarrão " + macarrao + recheio);	
 	}
 	
 	public static void lasanha(Massa massa) {
@@ -259,11 +228,11 @@ public class Programa {
 		
 		((Lasanha) massa).setTipoDeLasanha((montarLasanha));
 		
-		((Massa) massa).setTipoDeMassa("Pedido: Lasanha\n" 
+		((Massa) massa).setTipoDeMassa("lasanha\n" 
 		+ ((Lasanha) massa).getTipoDeLasanha());	
 		
 		System.out.println("Escolha o tamanho da sua lasanha: \n"
-				+ "1- Pequena 2- Média 3- Grande");
+				+ "[1] Pequena [2] Média [3] Grande");
 		int tamanhoDaLasanha = scan.nextInt();
 		
 		switch (tamanhoDaLasanha) {
@@ -278,6 +247,25 @@ public class Programa {
 			break;
 		}
 		
+		scan.nextLine();
+		
+	}
+	
+	public static void fazerPedido(Lanche lanche) {
+		System.out.println("Qual a sua distância em km do JavaLanches?");
+		int distancia = scan.nextInt();
+		lanche.tempoDeEntrega(distancia);
+		
+		if (distancia <= 10) {
+			lanche.setPrecoFrete(5);
+		} else if (distancia > 10 && distancia < 20) {
+			lanche.setPrecoFrete(10);
+		} else {
+			lanche.setPrecoFrete(20);
+		}
+		
+		lanche.setPrecoTotal(lanche.getPrecoFrete() + lanche.getPrecoLanche());
+		System.out.println(lanche);
 	}
 
 }

@@ -6,11 +6,13 @@ public abstract class Lanche {
 	private double precoTotal;
 	int tempo;
 	private String nomeCliente;
+	private String pedido;
 
 	@Override
 	public String toString() {
-		return "Lanche: " + precoLanche + ", Frete: " + precoFrete + 
-				"\nTotal R$" + precoTotal + " - Tempo de entrega: " + tempo 
+		return "Pedido: " + pedido + "\nValor: " + precoLanche +
+				", Frete: " + precoFrete + "\nTotal R$" + precoTotal +
+				" - Tempo de entrega: " + tempo 
 				+ " minutos.\nAgradecemos a preferência." ;
 	}
 
@@ -50,6 +52,14 @@ public abstract class Lanche {
 
 	public void setPrecoTotal(double precoTotal) {
 		this.precoTotal = precoTotal;
+	}
+
+	public String getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(String pedido) {
+		this.pedido = pedido;
 	}
 	
 }
