@@ -254,7 +254,7 @@ public class Programa {
 	public static void fazerPedido(Lanche lanche) {
 		System.out.println("Qual a sua distância em km do JavaLanches?");
 		int distancia = scan.nextInt();
-		lanche.tempoDeEntrega(distancia);
+		int tempo = lanche.tempoDeEntrega(distancia);
 		
 		if (distancia <= 10) {
 			lanche.setPrecoFrete(5);
@@ -263,9 +263,21 @@ public class Programa {
 		} else {
 			lanche.setPrecoFrete(20);
 		}
+		int hora = 0;
+		int minutos = 0;
+		
+		while (tempo >= 60) {
+			tempo -= 60;
+			hora++;
+		}
+
+		minutos += tempo;
+		tempo = 0;
 		
 		lanche.setPrecoTotal(lanche.getPrecoFrete() + lanche.getPrecoLanche());
 		System.out.println(lanche);
+		System.out.println("Tempo aproximado de entrega: " + hora+"h" + minutos+"min");
+		System.out.println("Agradecemos a preferência.");
 	}
 
 }

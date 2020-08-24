@@ -4,16 +4,13 @@ public abstract class Lanche {
 	private double precoLanche;
 	private double precoFrete;
 	private double precoTotal;
-	int tempo;
 	private String nomeCliente;
 	private String pedido;
 
 	@Override
 	public String toString() {
 		return "Pedido: " + pedido + "\nValor: " + precoLanche +
-				", Frete: " + precoFrete + "\nTotal R$" + precoTotal +
-				" - Tempo de entrega: " + tempo 
-				+ " minutos.\nAgradecemos a preferência." ;
+				", Frete: " + precoFrete + "\nTotal R$" + precoTotal;
 	}
 
 	public String getNomeCliente() {
@@ -25,9 +22,7 @@ public abstract class Lanche {
 	}
 	
 	public int tempoDeEntrega (int distancia) {
-		tempo = distancia * 10;
 		return distancia * 10;
-		
 	}
 
 	public double getPrecoLanche() {

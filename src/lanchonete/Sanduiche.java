@@ -19,8 +19,7 @@ public class Sanduiche extends Lanche {
 	}
 	
 	public int tempoDeEntrega (int distancia) {
-		super.tempo = super.tempoDeEntrega(distancia) + 15;
-		return tempo;
+		return super.tempoDeEntrega(distancia) + 15;
 	}
 	
 

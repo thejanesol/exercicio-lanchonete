@@ -13,8 +13,7 @@ public abstract class Massa extends Lanche {
 	}
 	
 	public int tempoDeEntrega (int distancia) {
-		super.tempo = super.tempoDeEntrega(distancia) + 30;
-		return tempo;
+		return super.tempoDeEntrega(distancia) + 30;
 	}
 
 	public String getMolho() {
